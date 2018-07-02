@@ -1,0 +1,37 @@
+{
+  "name": "sp-sig-20180705-demo",
+  "version": "1.0.0",
+  "description": "PnP and SharePoint SIG / July 5th, 2018 / Demo Examples",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf ./dist && tsc -p .",
+    "config": "node ./scripts/config",
+    "postinstall": "powershell .\\provisioning\\lib\\Install.ps1 -Module Online",
+    "provisioning": "npm run config && powershell .\\provisioning\\Deploy.ps1 -SchemaPath ./provisioning/model/demo.xml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/koltyakov/sp-sig-20180705-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/koltyakov/sp-sig-20180705-demo/issues"
+  },
+  "homepage": "https://gitlab.com/koltyakov/sp-sig-20180705-demo#README",
+  "dependencies": {
+    "@pnp/pnpjs": "^1.1.1",
+    "date-fns": "^1.29.0",
+    "node-sp-auth-config": "^2.5.3",
+    "sp-jsom-node": "^1.3.1",
+    "sp-pnp-node": "^2.1.2"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.10.0",
+    "tslint-config-standard": "^7.1.0",
+    "typescript": "^2.9.2"
+  }
+}

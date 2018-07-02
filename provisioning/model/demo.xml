@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema https://raw.githubusercontent.com/OfficeDev/PnP-Provisioning-Schema/master/OfficeDevPnP.ProvisioningSchema/ProvisioningSchema-2018-05.xsd">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.26.1805.1, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="SIG-DEMO">
+    <pnp:ProvisioningTemplate ID="SIG-DEMO-TEMPLATE" Version="1">
+      <pnp:SiteFields>
+        <Field Type="Text" Name="DataField01" DisplayName="Data Field 01" Group="SIG Demo" ID="ae91368c-dc25-4427-96ae-d637c37ce6fa" />
+        <Field Type="Text" Name="DataField02" DisplayName="Data Field 02" Group="SIG Demo" ID="dd59f2a7-9fa3-4fcc-bcb9-b09e8a2e11e5" />
+      </pnp:SiteFields>
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x0100FC21D3AFF84644FBB8C415028E284A49" Name="Guinea Pig" Group="SIG Demo">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" />
+            <pnp:FieldRef ID="ae91368c-dc25-4427-96ae-d637c37ce6fa" Name="Data Field 01" />
+            <pnp:FieldRef ID="dd59f2a7-9fa3-4fcc-bcb9-b09e8a2e11e5" Name="Data Field 02" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+      </pnp:ContentTypes>
+      <pnp:Lists>
+        <pnp:ListInstance Title="SysUpdate Experiment 01" TemplateType="100" Url="Lists/SysUpdate01" RemoveExistingContentTypes="true" ContentTypesEnabled="true" EnableVersioning="true" EnableMinorVersions="false">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0100FC21D3AFF84644FBB8C415028E284A49" Default="true" />
+          </pnp:ContentTypeBindings>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="ae91368c-dc25-4427-96ae-d637c37ce6fa" Name="DataField01" DisplayName="Data Field 01" />
+            <pnp:FieldRef ID="dd59f2a7-9fa3-4fcc-bcb9-b09e8a2e11e5" Name="DataField02" DisplayName="Data Field 02" />
+          </pnp:FieldRefs>
+          <pnp:Views RemoveExistingViews="true">
+            <View Name="f16e7c75-cf4d-453e-81c0-13019c1468a6" DefaultView="TRUE" DisplayName="All Guinea Pigs" Url="{site}/Lists/SysUpdate01/AllItems.aspx">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" Ascending="False" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="ID" />
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="DataField01" />
+                <FieldRef Name="DataField02" />
+                <FieldRef Name="Author" />
+                <FieldRef Name="Created" />
+                <FieldRef Name="Editor" />
+                <FieldRef Name="Modified" />
+                <FieldRef Name="_UIVersionString" />
+              </ViewFields>
+            </View>
+          </pnp:Views>
+          <pnp:DataRows KeyColumn="Title" UpdateBehavior="Skip">
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Braveheart</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Zipper</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Rocko</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Leonard</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Bart</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Sebastian</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Oliver</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Boomer</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Homer</pnp:DataValue></pnp:DataRow>
+          </pnp:DataRows>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
