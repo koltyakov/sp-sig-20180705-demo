@@ -1,19 +1,11 @@
 import { sp } from '@pnp/sp';
-import { PnpNode } from 'sp-pnp-node';
-import { getAuth } from '../common/auth';
+import { initPnp } from '../common/auth';
 import { getRelativeUrl } from '../common/utils';
 import { systemUpdate } from './helper';
 
 (async () => {
 
-  const { siteUrl, authOptions } = await getAuth.getContext();
-
-  sp.setup({
-    sp: {
-      fetchClientFactory: () => new PnpNode({ siteUrl, authOptions }),
-      baseUrl: siteUrl
-    }
-  });
+  const { siteUrl } = await initPnp();
 
   const guineaPigs = [ 'Homer', 'Zipper', 'Bart' ];
 

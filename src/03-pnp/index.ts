@@ -1,19 +1,12 @@
 import { sp } from '@pnp/sp';
-import { PnpNode } from 'sp-pnp-node';
-import { getAuth } from '../common/auth';
+import { initPnp } from '../common/auth';
 import { getRelativeUrl } from '../common/utils';
 import { systemUpdate } from './helper';
+// import { Changes } from '../common/changes';
 
 (async () => {
 
-  const { siteUrl, authOptions } = await getAuth.getContext();
-
-  sp.setup({
-    sp: {
-      fetchClientFactory: () => new PnpNode({ siteUrl, authOptions }),
-      baseUrl: siteUrl
-    }
-  });
+  const { siteUrl } = await initPnp();
 
   const guineaPigs = [ 'Oliver', 'Rocko', 'Sebastian' ];
 
@@ -26,6 +19,9 @@ import { systemUpdate } from './helper';
     }).join(' or '))
     .get();
 
+  // const changes = new Changes(`${getRelativeUrl(siteUrl)}/Lists/SysUpdate01`);
+  // await changes.getCurrentToken();
+
   for (const { Id, Title } of items) {
     console.log(`Updating: ${Title} (${Id})`);
     await systemUpdate(list.items.getById(Id), [{
@@ -33,6 +29,9 @@ import { systemUpdate } from './helper';
       FieldValue: `Updated with REST using PnPjs, ${new Date().toISOString()}`
     }]);
   }
+
+  // const changedItems = await changes.getChanges();
+  // console.log(changedItems);
 
   console.log('Done');
 
