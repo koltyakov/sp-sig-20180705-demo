@@ -11,23 +11,32 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/koltyakov/sp-sig-20180705-demo.git"
+    "url": "git+https://github.com/koltyakov/sp-sig-20180705-demo.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "PnPjs",
+    "SIG",
+    "Community",
+    "Demo",
+    "SharePoint",
+    "SystemUpdate"
+  ],
+  "author": "Andrew Koltyakov <andrew.koltyakov@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/koltyakov/sp-sig-20180705-demo/issues"
+    "url": "https://github.com/koltyakov/sp-sig-20180705-demo/issues"
   },
-  "homepage": "https://gitlab.com/koltyakov/sp-sig-20180705-demo#README",
+  "homepage": "https://github.com/koltyakov/sp-sig-20180705-demo#README",
   "dependencies": {
     "@pnp/pnpjs": "^1.1.1",
     "date-fns": "^1.29.0",
     "node-sp-auth-config": "^2.5.3",
     "sp-jsom-node": "^1.3.1",
-    "sp-pnp-node": "^2.1.2"
+    "sp-pnp-node": "^2.1.2",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
+    "@types/minimist": "^1.2.0",
     "rimraf": "^2.6.2",
     "ts-node": "^7.0.0",
     "tslint": "^5.10.0",

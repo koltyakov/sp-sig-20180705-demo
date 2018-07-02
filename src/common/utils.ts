@@ -1,3 +1,3 @@
 export const getRelativeUrl = (absoluteUrl: string): string => {
-  return `/${absoluteUrl.split('/').splice(3, 100).join('/')}`.replace(/\/\//g, '/');
+  return `/${absoluteUrl.split('/').splice(3).join('/')}`.replace(/\/\//g, '/');
 };

@@ -1,13 +1,13 @@
 [CmdletBinding()]
 Param (
-  [Parameter(Mandatory=$False)]
-  [string]$SiteUrl,
-
   [Parameter(Mandatory=$True)]
   [string]$SchemaPath,
 
   [Parameter(Mandatory=$False)]
-  [boolean]$DebugMode = $True
+  [string]$SiteUrl,
+
+  [Parameter(Mandatory=$False)]
+  [boolean]$DebugMode = $False
 );
 
 . "$PSScriptRoot\lib\Functions.ps1";

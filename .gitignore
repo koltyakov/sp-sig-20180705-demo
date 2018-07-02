@@ -1,3 +1,5 @@
 node_modules/
 config/private.*
 dist/
+temp/
+provisioning/Debug.ps1

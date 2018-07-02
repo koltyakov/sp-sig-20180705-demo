@@ -1,7 +1,6 @@
 import { JsomNode } from 'sp-jsom-node';
 import { getAuth } from '../common/auth';
 import { getRelativeUrl } from '../common/utils';
-// import { Changes } from '../common/changes';
 
 (async () => {
 
@@ -41,18 +40,11 @@ import { getRelativeUrl } from '../common/utils';
     console.log(`Updating: ${Title} (${ID})`);
     item.set_item('DataField01', `Updated with JSOM request, ${new Date().toISOString()}`);
     // item.update();
-    item['systemUpdate'](); // item.systemUpdate() just is not added in typings yet
     // item['updateOverwriteVersion']();
+    item['systemUpdate'](); // item.systemUpdate() just is not added in typings yet
   });
 
-  // const changes = new Changes(`${getRelativeUrl(siteUrl)}/Lists/SysUpdate01`);
-  // await changes.initPnp();
-  // await changes.getCurrentToken();
-
   await ctx.executeQueryPromise();
-
-  // const changedItems = await changes.getChanges();
-  // console.log(changedItems);
 
   console.log('Done');
 
