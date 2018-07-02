@@ -1,4 +1,4 @@
-import { Item, ListItemFormUpdateValue } from '@pnp/sp';
+import { Item, ListItemFormUpdateValue, PermissionKind } from '@pnp/sp';
 import { format } from 'date-fns';
 
 export const dateToFormString = (dateTime: Date | string): string => {
@@ -11,7 +11,12 @@ export const loginToFormString = (userName: string): string => {
 
 export const systemUpdate = async (item: Item, formUpdateValues: ListItemFormUpdateValue[]) => {
 
-  const { Editor: { Name }, Modified } = await item.select('Modified,Editor/Name').expand('Editor').get();
+  const permissions = await item.getCurrentUserEffectivePermissions();
+  if (!item.hasPermissions(permissions, PermissionKind.ManagePermissions)) {
+    throw new Error('403 - Access denied. Full Control permissions level is required for performing this operation.');
+  }
+
+  const { Author: { Name }, Created: Modified } = await item.select('Created,Author/Name').expand('Author').get();
 
   const sysUpdateData = [
     { FieldName: 'Editor', FieldValue: loginToFormString(Name) },
