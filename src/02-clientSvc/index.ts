@@ -7,9 +7,9 @@ import { systemUpdate } from './helper';
 
   const { siteUrl } = await initPnp();
 
-  const guineaPigs = [ 'Homer', 'Zipper', 'Bart' ];
+  const guineaPigs = [ 'Leonard', 'Bart', 'Sebastian' ];
 
-  const listUri = 'Lists/SysUpdate01';
+  const listUri = 'Lists/GuineaPigs';
   const items = await sp.web.getList(`${getRelativeUrl(siteUrl)}/${listUri}`).items
     .select('Id,Title')
     .filter(guineaPigs.map(name => {

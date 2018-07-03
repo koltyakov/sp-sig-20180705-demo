@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc -p .",
-    "config": "node ./scripts/config",
+    "config": "ts-node ./src/common/config",
     "postinstall": "powershell .\\provisioning\\lib\\Install.ps1 -Module Online",
-    "provisioning": "npm run config && powershell .\\provisioning\\Deploy.ps1 -SchemaPath ./provisioning/model/demo.xml"
+    "provisioning": "npm run config && powershell .\\provisioning\\Deploy.ps1 -SchemaPath ./provisioning/Demo.xml",
+    "demo:1": "ts-node ./src/01-jsom/index",
+    "demo:2": "ts-node ./src/02-clientSvc/index",
+    "demo:3": "ts-node ./src/03-pnp/index",
+    "reset": "ts-node ./src/common/reset"
   },
   "repository": {
     "type": "git",

@@ -8,9 +8,9 @@ import { getRelativeUrl } from '../common/utils';
   new JsomNode({ siteUrl, authOptions }).init();
 
   const ctx = new SP.ClientContext(siteUrl);
-  const list = ctx.get_web().getList(`${getRelativeUrl(siteUrl)}/Lists/SysUpdate01`);
+  const list = ctx.get_web().getList(`${getRelativeUrl(siteUrl)}/Lists/GuineaPigs`);
 
-  const guineaPigs = [ 'Braveheart', 'Leonard', 'Boomer' ];
+  const guineaPigs = [ 'Braveheart', 'Zipper', 'Rocko' ];
 
   const camlQuery = new SP.CamlQuery();
   camlQuery.set_viewXml(`

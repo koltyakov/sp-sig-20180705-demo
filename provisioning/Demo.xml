@@ -4,6 +4,7 @@
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.26.1805.1, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
   <pnp:Templates ID="SIG-DEMO">
     <pnp:ProvisioningTemplate ID="SIG-DEMO-TEMPLATE" Version="1">
+      <pnp:WebSettings WelcomePage="Lists/GuineaPigs" />
       <pnp:SiteFields>
         <Field Type="Text" Name="DataField01" DisplayName="Data Field 01" Group="SIG Demo" ID="ae91368c-dc25-4427-96ae-d637c37ce6fa" />
         <Field Type="Text" Name="DataField02" DisplayName="Data Field 02" Group="SIG Demo" ID="dd59f2a7-9fa3-4fcc-bcb9-b09e8a2e11e5" />
@@ -19,7 +20,7 @@
         </pnp:ContentType>
       </pnp:ContentTypes>
       <pnp:Lists>
-        <pnp:ListInstance Title="SysUpdate Experiment 01" TemplateType="100" Url="Lists/SysUpdate01" RemoveExistingContentTypes="true" ContentTypesEnabled="true" EnableVersioning="true" EnableMinorVersions="false">
+        <pnp:ListInstance Title="Guinea Pigs" TemplateType="100" Url="Lists/GuineaPigs" RemoveExistingContentTypes="true" ContentTypesEnabled="true" EnableVersioning="true" EnableMinorVersions="false">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x0100FC21D3AFF84644FBB8C415028E284A49" Default="true" />
           </pnp:ContentTypeBindings>
@@ -28,16 +29,30 @@
             <pnp:FieldRef ID="dd59f2a7-9fa3-4fcc-bcb9-b09e8a2e11e5" Name="DataField02" DisplayName="Data Field 02" />
           </pnp:FieldRefs>
           <pnp:Views RemoveExistingViews="true">
-            <View Name="f16e7c75-cf4d-453e-81c0-13019c1468a6" DefaultView="TRUE" DisplayName="All Guinea Pigs" Url="{site}/Lists/SysUpdate01/AllItems.aspx">
+            <View Name="f16e7c75-cf4d-453e-81c0-13019c1468a6" DefaultView="TRUE" DisplayName="All Guinea Pigs" Url="{site}/Lists/GuineaPigs/AllItems.aspx">
               <Query>
                 <OrderBy>
                   <FieldRef Name="ID" Ascending="False" />
                 </OrderBy>
               </Query>
               <ViewFields>
-                <FieldRef Name="ID" />
                 <FieldRef Name="LinkTitle" />
                 <FieldRef Name="DataField01" />
+                <FieldRef Name="Author" />
+                <FieldRef Name="Created" />
+                <FieldRef Name="Editor" />
+                <FieldRef Name="Modified" />
+                <FieldRef Name="_UIVersionString" />
+              </ViewFields>
+            </View>
+            <View Name="d83c0d0e-14aa-4772-a6e8-eb0fc4b01eb3" DefaultView="FALSE" DisplayName="Flow Guinea Pigs" Url="{site}/Lists/GuineaPigs/Flow.aspx">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" Ascending="False" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
                 <FieldRef Name="DataField02" />
                 <FieldRef Name="Author" />
                 <FieldRef Name="Created" />
@@ -57,6 +72,10 @@
             <pnp:DataRow><pnp:DataValue FieldName='Title'>Oliver</pnp:DataValue></pnp:DataRow>
             <pnp:DataRow><pnp:DataValue FieldName='Title'>Boomer</pnp:DataValue></pnp:DataRow>
             <pnp:DataRow><pnp:DataValue FieldName='Title'>Homer</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>John</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Casper</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Sergei</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName='Title'>Vlad</pnp:DataValue></pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
       </pnp:Lists>
