@@ -38,8 +38,6 @@
               <ViewFields>
                 <FieldRef Name="LinkTitle" />
                 <FieldRef Name="DataField01" />
-                <FieldRef Name="Author" />
-                <FieldRef Name="Created" />
                 <FieldRef Name="Editor" />
                 <FieldRef Name="Modified" />
                 <FieldRef Name="_UIVersionString" />
@@ -54,8 +52,6 @@
               <ViewFields>
                 <FieldRef Name="LinkTitle" />
                 <FieldRef Name="DataField02" />
-                <FieldRef Name="Author" />
-                <FieldRef Name="Created" />
                 <FieldRef Name="Editor" />
                 <FieldRef Name="Modified" />
                 <FieldRef Name="_UIVersionString" />
