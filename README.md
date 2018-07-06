@@ -2,6 +2,8 @@
 
 The demo shows capabilities for SharePoint list items `System Update` using client-side APIs.
 
+[Follow-up blog post](https://www.linkedin.com/pulse/list-items-system-update-options-sharepoint-online-andrew-koltyakov/)
+
 ## Prerequisites
 
 - Node.js & PowerShell
@@ -37,23 +39,25 @@ Provisions all the artifacts required for the demo.
 
 ## Demos
 
-### JSOM
+### JSOM (systemUpdate, updateOverwriteVersion)
 
 ```bash
 npm run demo:1
 ```
 
-### JSOM (raw XML package)
+### JSOM (raw XML package, systemUpdate)
 
 ```bash
 npm run demo:2
 ```
 
-### REST
+### REST (validateUpdateListItem)
 
 ```bash
 npm run demo:3
 ```
+
+#### [Field data types fingerprints](./src/03-pnp/FieldTypes.md)
 
 ## Reset test data
 
