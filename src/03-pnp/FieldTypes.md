@@ -15,8 +15,8 @@ import { sp } from '@pnp/sp';
       { FieldName: 'NumberField', FieldValue: '123'  },
       { FieldName: 'YesNoField', FieldValue: '1' /* Yes, No, 1, 2 */ },
       { FieldName: 'PersonField', FieldValue: JSON.stringify([{ Key: userName }]) },
-      { FieldName: 'DateTimeField', FieldValue: '6/23/2Field8 10:15 PM' },
-      { FieldName: 'DateField', FieldValue: '6/23/2Field8' /* 'M/D/YYYY' */ },
+      { FieldName: 'DateTimeField', FieldValue: '6/23/2018 10:15 PM' },
+      { FieldName: 'DateField', FieldValue: '6/23/2018' /* 'M/D/YYYY' */ },
       { FieldName: 'ChoiceField', FieldValue: 'Choice 1' },
       { FieldName: 'MultiChoiceField', FieldValue: 'Choice 1;#Choice 2' },
       // Or picture, after URL a description can go after ', ' delimeter
