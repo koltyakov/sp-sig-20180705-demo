@@ -1,7 +1,13 @@
-import { Item, ListItemFormUpdateValue, PermissionKind } from '@pnp/sp';
-import { format } from 'date-fns';
+import { sp, Item, ListItemFormUpdateValue, PermissionKind, Web } from '@pnp/sp';
+import { format, addMinutes } from 'date-fns';
 
-export const dateToFormString = (dateTime: Date | string): string => {
+export const dateToFormStringAutoOffset = async (dateTime: Date | string, web: Web = sp.web): Promise<string> => {
+  const { Bias: offsetBias } = await web.regionalSettings.timeZone.usingCaching().get().then(t => t.Information);
+  return dateToFormString(dateTime, offsetBias);
+};
+
+export const dateToFormString = (dateTime: Date | string, offsetBias: number = 0): string => {
+  dateTime = addMinutes(new Date(dateTime), new Date().getTimezoneOffset() - offsetBias);
   return format(dateTime, 'M/D/YYYY h:m A');
 };
 
@@ -10,7 +16,9 @@ export const loginToFormString = (userName: string): string => {
 };
 
 export const systemUpdate = async (item: Item, formUpdateValues: ListItemFormUpdateValue[]) => {
-
+  
+  const web = new Web(item.toUrl().split('_api')[0]);
+  
   const permissions = await item.getCurrentUserEffectivePermissions();
   if (!item.hasPermissions(permissions, PermissionKind.ManagePermissions)) {
     throw new Error('403 - Access denied. Full Control permissions level is required for performing this operation.');
@@ -20,7 +28,7 @@ export const systemUpdate = async (item: Item, formUpdateValues: ListItemFormUpd
 
   const sysUpdateData = [
     { FieldName: 'Editor', FieldValue: loginToFormString(Name) },
-    { FieldName: 'Modified', FieldValue: dateToFormString(new Date(Modified)) }
+    { FieldName: 'Modified', FieldValue: await dateToFormStringAutoOffset(Modified, web) }
   ];
 
   const result = await item.validateUpdateListItem(formUpdateValues.concat(sysUpdateData), true);
