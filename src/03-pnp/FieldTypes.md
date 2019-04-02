@@ -14,8 +14,14 @@ import { sp } from '@pnp/sp';
       { FieldName: 'TextField', FieldValue: '123' },
       { FieldName: 'NumberField', FieldValue: '123'  },
       { FieldName: 'YesNoField', FieldValue: '1' /* Yes, No, 1, 2 */ },
-      { FieldName: 'PersonField', FieldValue: JSON.stringify([{ Key: userName }]) },
-      { FieldName: 'MultiPersonField', FieldValue: JSON.stringify([{ Key: userName1 }, { Key: userName2 }]) },
+      { FieldName: 'PersonField', FieldValue: JSON.stringify([{ Key: userName, IsResolved: true }]) },
+      {
+        FieldName: 'MultiPersonField',
+        FieldValue: JSON.stringify([
+          { Key: userName1, IsResolved: true },
+          { Key: userName2, IsResolved: true }
+        ])
+      },
       { FieldName: 'DateTimeField', FieldValue: '6/23/2018 10:15 PM' },
       { FieldName: 'DateField', FieldValue: '6/23/2018' /* 'M/D/YYYY' */ },
       { FieldName: 'ChoiceField', FieldValue: 'Choice 1' },
