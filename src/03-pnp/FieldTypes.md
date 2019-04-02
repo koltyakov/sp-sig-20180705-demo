@@ -20,6 +20,7 @@ import { sp } from '@pnp/sp';
         FieldValue: JSON.stringify([
           { Key: userName1, IsResolved: true },
           { Key: userName2, IsResolved: true }
+          // { Key: 'i:0#.f|membership|user1@contoso.onmicrosoft.com', IsResolved: true }
         ])
       },
       { FieldName: 'DateTimeField', FieldValue: '6/23/2018 10:15 PM' },
