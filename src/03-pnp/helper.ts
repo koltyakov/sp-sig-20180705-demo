@@ -12,7 +12,7 @@ export const dateToFormString = (dateTime: Date | string, offsetBias: number = 0
 };
 
 export const loginToFormString = (userName: string): string => {
-  return JSON.stringify([{ Key: userName }]);
+  return JSON.stringify([{ Key: userName, IsResolved: true }]);
 };
 
 export const systemUpdate = async (item: Item, formUpdateValues: ListItemFormUpdateValue[]) => {
