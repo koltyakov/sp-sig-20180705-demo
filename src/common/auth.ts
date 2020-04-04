@@ -5,7 +5,7 @@ import * as parseArgs from 'minimist';
 
 const args = parseArgs(process.argv);
 
-export const configPath = args['private'] || './config/private.json';
+export const configPath = args.private || './config/private.json';
 
 export const getAuth = new AuthConfig({
   configPath,

@@ -13,8 +13,8 @@ const getRandomDate = (start: Date, end: Date): Date => {
 
   const currentUser = await sp.web.currentUser.select('LoginName').get();
   const users = await sp.web.siteUsers.select('Id,LoginName').get()
-    .then(users => users.filter(({ LoginName }) => LoginName.indexOf('i:0#.f|membership|') !== -1))
-    .then(users => users.filter(({ LoginName }) => LoginName !== currentUser.LoginName));
+    .then((u) => u.filter(({ LoginName }) => LoginName.indexOf('i:0#.f|membership|') !== -1))
+    .then((u) => u.filter(({ LoginName }) => LoginName !== currentUser.LoginName));
 
   const listUri = 'Lists/GuineaPigs';
   const list = sp.web.getList(`${getRelativeUrl(siteUrl)}/${listUri}`);

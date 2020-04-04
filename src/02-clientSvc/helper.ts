@@ -8,7 +8,7 @@ export const systemUpdate = (siteUrl: string, listUri: string, itemId: number, d
     return `
       <Request xmlns="http://schemas.microsoft.com/sharepoint/clientquery/2009" SchemaVersion="15.0.0.0" LibraryVersion="16.0.0.0" ApplicationName="Javascript Library">
         <Actions>
-          ${data.map(d => {
+          ${data.map((d) => {
             return `
               <Method Name="SetFieldValue" Id="${objectId++}" ObjectPathId="3">
                 <Parameters>
@@ -49,8 +49,8 @@ export const systemUpdate = (siteUrl: string, listUri: string, itemId: number, d
     },
     body
   })
-    .then(r => r.json())
-    .then(r => {
+    .then((r) => r.json())
+    .then((r) => {
       if (r[0].ErrorInfo) {
         throw new Error(r[0].ErrorInfo.ErrorMessage);
       }

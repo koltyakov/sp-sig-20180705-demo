@@ -4,7 +4,7 @@
   "description": "PnP and SharePoint SIG / July 5th, 2018 / Demo Examples",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf ./dist && tsc -p .",
+    "build": "rimraf ./dist && tslint -p . && tsc -p .",
     "config": "ts-node ./src/common/config",
     "postinstall": "powershell .\\provisioning\\lib\\Install.ps1 -Module Online",
     "provisioning": "npm run config && powershell .\\provisioning\\Deploy.ps1 -SchemaPath ./provisioning/Demo.xml",
@@ -32,19 +32,18 @@
   },
   "homepage": "https://github.com/koltyakov/sp-sig-20180705-demo#README",
   "dependencies": {
-    "@pnp/pnpjs": "^1.1.1",
-    "node-sp-auth-config": "^2.5.3",
-    "sp-jsom-node": "^1.3.1",
-    "sp-pnp-node": "^2.1.2",
-    "date-fns": "^1.29.0",
-    "minimist": "^1.2.2"
+    "@pnp/pnpjs": "^1.3.10",
+    "node-sp-auth-config": "^2.9.3",
+    "sp-jsom-node": "^3.1.0",
+    "sp-pnp-node": "^2.2.1",
+    "date-fns": "^2.11.1",
+    "minimist": "^1.2.5"
   },
   "devDependencies": {
     "@types/minimist": "^1.2.0",
-    "rimraf": "^2.6.2",
-    "ts-node": "^7.0.0",
-    "tslint": "^5.10.0",
-    "tslint-config-standard": "^7.1.0",
-    "typescript": "^2.9.2"
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.8.1",
+    "tslint": "^6.1.1",
+    "typescript": "^3.8.3"
   }
 }

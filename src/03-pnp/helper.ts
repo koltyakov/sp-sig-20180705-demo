@@ -2,7 +2,7 @@ import { sp, Item, ListItemFormUpdateValue, PermissionKind, Web } from '@pnp/sp'
 import { format, addMinutes } from 'date-fns';
 
 export const dateToFormStringAutoOffset = async (dateTime: Date | string, web: Web = sp.web): Promise<string> => {
-  const { Bias: offsetBias } = await web.regionalSettings.timeZone.usingCaching().get().then(t => t.Information);
+  const { Bias: offsetBias } = await web.regionalSettings.timeZone.usingCaching().get().then((t) => t.Information);
   return dateToFormString(dateTime, offsetBias);
 };
 
@@ -16,9 +16,9 @@ export const loginToFormString = (userName: string): string => {
 };
 
 export const systemUpdate = async (item: Item, formUpdateValues: ListItemFormUpdateValue[]) => {
-  
+
   const web = new Web(item.toUrl().split('_api')[0]);
-  
+
   const permissions = await item.getCurrentUserEffectivePermissions();
   if (!item.hasPermissions(permissions, PermissionKind.ManagePermissions)) {
     throw new Error('403 - Access denied. Full Control permissions level is required for performing this operation.');
@@ -33,7 +33,7 @@ export const systemUpdate = async (item: Item, formUpdateValues: ListItemFormUpd
 
   const result = await item.validateUpdateListItem(formUpdateValues.concat(sysUpdateData), true);
 
-  const errors = result.filter(field => field.ErrorMessage !== null);
+  const errors = result.filter((field) => field.ErrorMessage !== null);
   if (errors.length > 0) {
     throw new Error(JSON.stringify(errors));
   }

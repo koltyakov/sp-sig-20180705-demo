@@ -12,7 +12,7 @@ import { systemUpdate } from './helper';
   const listUri = 'Lists/GuineaPigs';
   const items = await sp.web.getList(`${getRelativeUrl(siteUrl)}/${listUri}`).items
     .select('Id,Title')
-    .filter(guineaPigs.map(name => {
+    .filter(guineaPigs.map((name) => {
       return `Title eq '${name}'`;
     }).join(' or '))
     .get();

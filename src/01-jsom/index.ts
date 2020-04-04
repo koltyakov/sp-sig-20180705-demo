@@ -5,7 +5,7 @@ import { getRelativeUrl } from '../common/utils';
 (async () => {
 
   const { siteUrl, authOptions } = await getAuth.getContext();
-  new JsomNode({ siteUrl, authOptions }).init();
+  new JsomNode().init({ siteUrl, authOptions });
 
   const ctx = new SP.ClientContext(siteUrl);
   const list = ctx.get_web().getList(`${getRelativeUrl(siteUrl)}/Lists/GuineaPigs`);
@@ -20,7 +20,7 @@ import { getRelativeUrl } from '../common/utils';
           <In>
             <FieldRef Name='Title' />
             <Values>
-              ${guineaPigs.map(name => {
+              ${guineaPigs.map((name) => {
                 return `<Value Type='Text'>${name}</Value>`;
               }).join('')}
             </Values>
@@ -35,13 +35,13 @@ import { getRelativeUrl } from '../common/utils';
   ctx.load(items, 'Include(ID,Title)');
   await ctx.executeQueryPromise();
 
-  items.get_data().forEach(item => {
+  items.get_data().forEach((item) => {
     const { ID, Title } = item.get_fieldValues();
     console.log(`Updating: ${Title} (${ID})`);
     item.set_item('DataField01', `Updated with JSOM request, ${new Date().toISOString()}`);
     // item.update();
     // item['updateOverwriteVersion']();
-    item['systemUpdate'](); // item.systemUpdate() just is not added in typings yet
+    (item as any).systemUpdate(); // item.systemUpdate() just is not added in typings yet
   });
 
   await ctx.executeQueryPromise();
